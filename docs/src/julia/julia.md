@@ -110,3 +110,143 @@ end #end module
 ```
 
 Para mais informações [Modules](https://docs.julialang.org/en/v0.6.1/manual/modules/)
+
+
+## Interface Comum
+Agora gostaríamos de criar uma interface que permitisse o cálculo da área de qualquer figura geométrica e a informação da fórmula da área, o único requisito para poder calcular tal área é que **alguém** tenha criado um módulo para a tal figura geométrica com a função específica para calcular a área.
+
+Alguns exemplos clássicos de módulos que funcionam como interface comum seriam ```JuMP``` e ```Plots```. Esses módulos reunem uma série de funções básicas que podem ser realizadas de formas diferentes, um exemplo fácil é a função ```solve```, podemos resolver um problema de programação linear usando solvers diferentes como ```Clp``` e ```Gurobi```
+
+A interface seria o módulo Shape
+```julia
+module Shape
+
+export area, printformula, GeometricShape
+
+abstract type GeometricShape end
+
+"""Calcula a área de uma figura geométrica do tipo GeometricShape"""
+function area(shape::GeometricShape)
+     error("function not defined for $(typeof(shape))")
+end
+
+"""Escreve a fórmula da área de uma figura geométrica do tipo GeometricShape"""
+function printformula(shape::GeometricShape)
+    print(shape.formula)
+end
+
+end #end module
+```
+
+Agora dado que existe esse módulo de interface comum qualquer desenvolvedor poderá criar módulos independentes que se aproveitam da estrutura do Shape.
+Podemos integrar o módulo Rect e Triang como no exemplo abaixo
+
+```julia
+module Rect
+
+using Shape             #Necessário para poder usar a interface comum
+
+export Rectangle, area  #Métodos visiveis pelo usuário que fez using Rect
+
+mutable struct Rectangle <: GeometricShape
+    formula::String
+    base::Float64
+    height::Float64
+end
+
+"""Construtor do tipo Rectangle"""
+function Rectangle(base::Float64, height::Float64)
+    Rectangle("base*height", base, height)
+end
+
+"""Calcula a área de um retângulo declarado como Rectangle"""
+function Shape.area(rectangle::Rectangle)
+    return (rectangle.base)*(rectangle.height)
+end
+
+end #end module
+```
+
+```julia
+module Triang
+
+using Shape             #Necessário para poder usar a interface comum
+
+export Triangle, area   #Métodos visiveis pelo usuário que fez using Rect
+
+mutable struct Triangle <: GeometricShape
+    formula::String
+    base::Float64
+    height::Float64
+end
+
+"""Construtor do tipo Triangle"""
+function Triangle(base::Float64, height::Float64)
+    Triangle("(base*height)/2", base, height)
+end
+
+"""Calcula a área de um triângulo declarado como Triangle"""
+function Shape.area(triangle::Triangle)
+    return (triangle.base)*(triangle.height)/2
+end
+
+end #end module
+```
+
+
+Agora podemos usar a função area para calcular areas de quaisquer Figuras Geométricas definidas assim como podemos descobrir a fórmula para o cálculo da área
+```julia
+using Shape, Rect, Triang
+
+triang = Triangle(1.0, 2.0)
+rect = Rectangle(1.0, 2.0)
+
+area(rect)
+area(triang)
+
+printformula(triang)
+printformula(rect)
+```
+
+Você também pode atribuir funções que são contribuidas
+
+
+usar exemplo pessoa ou pensar em algo que faça sentido para shape
+
+
+
+Links úteis para se aprofundar [Modular Algorithms for Scientific Computing in Julia](http://www.stochasticlifestyle.com/modular-algorithms-scientific-computing-julia/)
+
+## Base.Test
+O Julia tem uma biblioteca específica para realizar testes unitários, aqui estão alguns exemplos rápidos do uso da biblioteca. Vamos usar os pacotes ja usados como exemplo ```Rect``` e ```Triang```.
+digamos que a título de teste unitário do módulo gostariamos de checar se as áreas estão sendo calculadas de forma correta. Nesse caso temos uma grande vantagem, as áreas são super fáceis de calcular analiticamente! :)
+```julia
+using Base.Test, Shape, Triang, Rect
+
+rect = Rectangle(1.0, 2.0)
+triang = Triangle(1.0, 2.0)
+
+area(rect)    #Área = 2
+area(triang)  #Área = 1
+```
+Para testa o código podemos usar a macro ```@test``` no mesmo arquivo adicionando 
+```julia
+@test area(rect) == 2
+@test area(triang) == 1
+```
+Outra forma de fazer os testes seria agrupa-los em um ```@testset```
+```julia
+@testset "Áreas de Figuras Geométricas" begin
+    @test area(rect) == 2
+    @test area(triang) == 1
+end
+```
+A vantagem de fazer os testes com ```@testset``` é que no final dos testes a macro mostra um resumo dos testes no console
+```
+Test Summary:                | Pass  Total
+Áreas de Figuras Geométricas |    2      2
+```
+
+
+
+para mais informações ver [Unit Tests](https://docs.julialang.org/en/v0.6.1/stdlib/test/)
