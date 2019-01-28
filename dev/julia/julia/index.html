@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Julia · Ensino Lamps</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/><link href="../../assets/logo.ico" rel="icon" type="image/x-icon"/></head><body><nav class="toc"><a href="../../index.html"><img class="logo" src="../../assets/logo.png" alt="Ensino Lamps logo"/></a><h1>Ensino Lamps</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../../search/"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../">Home</a></li><li><span class="toctext">Ferramentas</span><ul><li class="current"><a class="toctext" href>Julia</a><ul class="internal"><li><a class="toctext" href="#Tipos-1">Tipos</a></li><li><a class="toctext" href="#Módulos-1">Módulos</a></li><li><a class="toctext" href="#Interface-Comum-1">Interface Comum</a></li><li><a class="toctext" href="#Base.Test-1">Base.Test</a></li></ul></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Ferramentas</li><li><a href>Julia</a></li></ul><a class="edit-page" href="https://github.com/LAMPSPUC/Ensino.jl/blob/master/docs/src/julia/julia.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>Julia</span><a class="fa fa-bars" href="#"></a></div></header><h1><a class="nav-anchor" id="Julia-1" href="#Julia-1">Julia</a></h1><h2><a class="nav-anchor" id="Tipos-1" href="#Tipos-1">Tipos</a></h2><p>Para realizar a modelagem de tipos dentro dos módulos é necessário ter uma estrutra de dados em mente, o que não é óbvio. Independente da estrutura de dados escolhida usamos tipos abstratos e tipos compósitos. Como exemplo de estrutura de dados para exemplificar a modelagem vamos modelar formas geométricas. Como existem muitas formas geométricas poderíamos dizer que formas geométricas são de certa forma um conceito abstrato, o que encaixa perfeitamente na modelização por tipo abstrato</p><pre><code class="language-julia">abstract type GeometricShape end</code></pre><p>Apesar de existirem infinitas formas geométricas vemos todos os dias retângulos e triângulos que podem ser concretamente modeladas. Para fazer a modelagem de retângulos precisamos saber quais são as especificações dos retângulos, no caso altura e largura. Poderíamos dizer que base e altura definem, compõem um retângulo e aqui identificamos que um retângulo pode ser modelado por um tipo compósito. Um argumento a mais possível para os retângulos seria uma string que diz a fórmula da sua área</p><pre><code class="language-julia">mutable struct Rectangle &lt;: GeometricShape
+    formula::String
+    base::Float64
+    height::Float64
+end</code></pre><p>Analogamente os triângulos são definidos por base e altura</p><pre><code class="language-julia">mutable struct Triangle &lt;: GeometricShape
+    formula::String
+    base::Float64
+    height::Float64
+end</code></pre><p>Ao declarar um tipo automaticamente um construtor é criado, ou seja, foi criada uma função para construir um retângulo e um triângulo, declarando de forma simples </p><pre><code class="language-julia">rect = Rectangle(&quot;base*height&quot;, 1.0, 2.0)
+triang = Triangle(&quot;(base*height)/2&quot;, 1.0, 2.0)</code></pre><p>criamos uma variável rect do tipo Rectangle e uma variável tring do tipo Triangle.</p><p>Como a fórmula para calcular a área de uma figura nunca muda poderíamos criar um novo construtor que ao receber os parâmetros base e height preenche automaticamente a fórmula tanto para triângulos quanto para retângulos</p><pre><code class="language-julia">function Rectangle(base::Float64, height::Float64)
+    Rectangle(&quot;base*height&quot;, base, height)
+end
+
+function Triangle(base::Float64, height::Float64)
+    Triangle(&quot;(base*height)/2&quot;, base, height)
+end</code></pre><p>Agora podemos construir retângulos e triângulos declarando apenas as suas dimensões</p><pre><code class="language-julia">rect = Rectangle(1.0, 2.0)
+triang = Triangle(1.0, 2.0)</code></pre><p>Tipos compósitos podem herdar métodos de bibliotecas específicas, para mais informações: <a href="https://en.wikipedia.org/wiki/Composition_over_inheritance">Composite over inheritance</a>, <a href="https://www.youtube.com/watch?v=dYUZiJEy0JE">Composition vs Inheritance</a></p><p>Para mais informações <a href="https://docs.julialang.org/en/v0.6.1/manual/types/#">Types</a> e <a href="https://docs.julialang.org/en/v0.6.1/manual/constructors/">Constructors</a></p><h2><a class="nav-anchor" id="Módulos-1" href="#Módulos-1">Módulos</a></h2><p>Agora imagine que exista um módulo que trate unicamente de retângulos <code>Rect</code>, vamos assumir que este módulos possua apenas uma função, calcular a área da figura geométrica. Um módulo pode ter muitas variantes mas segue uma estrutura base, um módulo em geral possui tipos específicos, funções específicas e deve exportar as funções que os usuários do módulo podem utilizar</p><p>Considere o seguinte módulo</p><pre><code class="language-julia">module Rect
+
+using Shape             #Necessário para poder usar a interface comum
+
+export Rectangle, area  #Métodos visiveis pelo usuário que fez using Rect
+
+mutable struct Rectangle &lt;: GeometricShape
+    formula::String
+    base::Float64
+    height::Float64
+end
+
+&quot;&quot;&quot;Construtor do tipo Rectangle&quot;&quot;&quot;
+function Rectangle(base::Float64, height::Float64)
+    Rectangle(&quot;base*height&quot;, base, height)
+end
+
+&quot;&quot;&quot;Calcula a área de um retângulo declarado como Rectangle&quot;&quot;&quot;
+function area(rectangle::Rectangle)
+    return (rectangle.base)*(rectangle.height)
+end
+
+end #end module</code></pre><p>Analogamente</p><pre><code class="language-julia">module Triang
+
+using Shape             #Necessário para poder usar a interface comum
+
+export Triangle, area   #Métodos visiveis pelo usuário que fez using Rect
+
+mutable struct Triangle &lt;: GeometricShape
+    formula::String
+    base::Float64
+    height::Float64
+end
+
+&quot;&quot;&quot;Construtor do tipo Triangle&quot;&quot;&quot;
+function Triangle(base::Float64, height::Float64)
+    Triangle(&quot;(base*height)/2&quot;, base, height)
+end
+
+&quot;&quot;&quot;Calcula a área de um triângulo declarado como Triangle&quot;&quot;&quot;
+function area(triangle::Triangle)
+    return (triangle.base)*(triangle.height)/2
+end
+
+end #end module</code></pre><p>Para mais informações <a href="https://docs.julialang.org/en/v0.6.1/manual/modules/">Modules</a></p><h2><a class="nav-anchor" id="Interface-Comum-1" href="#Interface-Comum-1">Interface Comum</a></h2><p>Agora gostaríamos de criar uma interface que permitisse o cálculo da área de qualquer figura geométrica e a informação da fórmula da área, o único requisito para poder calcular tal área é que <strong>alguém</strong> tenha criado um módulo para a tal figura geométrica com a função específica para calcular a área.</p><p>Alguns exemplos clássicos de módulos que funcionam como interface comum seriam <code>JuMP</code> e <code>Plots</code>. Esses módulos reunem uma série de funções básicas que podem ser realizadas de formas diferentes, um exemplo fácil é a função <code>solve</code>, podemos resolver um problema de programação linear usando solvers diferentes como <code>Clp</code> e <code>Gurobi</code></p><p>A interface seria o módulo Shape</p><pre><code class="language-julia">module Shape
+
+export area, printformula, GeometricShape
+
+abstract type GeometricShape end
+
+&quot;&quot;&quot;Calcula a área de uma figura geométrica do tipo GeometricShape&quot;&quot;&quot;
+function area(shape::GeometricShape)
+     error(&quot;function not defined for $(typeof(shape))&quot;)
+end
+
+&quot;&quot;&quot;Escreve a fórmula da área de uma figura geométrica do tipo GeometricShape&quot;&quot;&quot;
+function printformula(shape::GeometricShape)
+    print(shape.formula)
+end
+
+end #end module</code></pre><p>Agora dado que existe esse módulo de interface comum qualquer desenvolvedor poderá criar módulos independentes que se aproveitam da estrutura do Shape. Podemos integrar o módulo Rect e Triang como no exemplo abaixo</p><pre><code class="language-julia">module Rect
+
+using Shape             #Necessário para poder usar a interface comum
+
+export Rectangle, area  #Métodos visiveis pelo usuário que fez using Rect
+
+mutable struct Rectangle &lt;: GeometricShape
+    formula::String
+    base::Float64
+    height::Float64
+end
+
+&quot;&quot;&quot;Construtor do tipo Rectangle&quot;&quot;&quot;
+function Rectangle(base::Float64, height::Float64)
+    Rectangle(&quot;base*height&quot;, base, height)
+end
+
+&quot;&quot;&quot;Calcula a área de um retângulo declarado como Rectangle&quot;&quot;&quot;
+function Shape.area(rectangle::Rectangle)
+    return (rectangle.base)*(rectangle.height)
+end
+
+end #end module</code></pre><pre><code class="language-julia">module Triang
+
+using Shape             #Necessário para poder usar a interface comum
+
+export Triangle, area   #Métodos visiveis pelo usuário que fez using Rect
+
+mutable struct Triangle &lt;: GeometricShape
+    formula::String
+    base::Float64
+    height::Float64
+end
+
+&quot;&quot;&quot;Construtor do tipo Triangle&quot;&quot;&quot;
+function Triangle(base::Float64, height::Float64)
+    Triangle(&quot;(base*height)/2&quot;, base, height)
+end
+
+&quot;&quot;&quot;Calcula a área de um triângulo declarado como Triangle&quot;&quot;&quot;
+function Shape.area(triangle::Triangle)
+    return (triangle.base)*(triangle.height)/2
+end
+
+end #end module</code></pre><p>Agora podemos usar a função area para calcular areas de quaisquer Figuras Geométricas definidas assim como podemos descobrir a fórmula para o cálculo da área</p><pre><code class="language-julia">using Shape, Rect, Triang
+
+triang = Triangle(1.0, 2.0)
+rect = Rectangle(1.0, 2.0)
+
+area(rect)
+area(triang)
+
+printformula(triang)
+printformula(rect)</code></pre><p>Você também pode atribuir funções que são contribuidas</p><p>usar exemplo pessoa ou pensar em algo que faça sentido para shape</p><p>Links úteis para se aprofundar <a href="http://www.stochasticlifestyle.com/modular-algorithms-scientific-computing-julia/">Modular Algorithms for Scientific Computing in Julia</a></p><h2><a class="nav-anchor" id="Base.Test-1" href="#Base.Test-1">Base.Test</a></h2><p>O Julia tem uma biblioteca específica para realizar testes unitários, aqui estão alguns exemplos rápidos do uso da biblioteca. Vamos usar os pacotes ja usados como exemplo <code>Rect</code> e <code>Triang</code>. digamos que a título de teste unitário do módulo gostariamos de checar se as áreas estão sendo calculadas de forma correta. Nesse caso temos uma grande vantagem, as áreas são super fáceis de calcular analiticamente! :)</p><pre><code class="language-julia">using Base.Test, Shape, Triang, Rect
+
+rect = Rectangle(1.0, 2.0)
+triang = Triangle(1.0, 2.0)
+
+area(rect)    #Área = 2
+area(triang)  #Área = 1</code></pre><p>Para testa o código podemos usar a macro <code>@test</code> no mesmo arquivo adicionando </p><pre><code class="language-julia">@test area(rect) == 2
+@test area(triang) == 1</code></pre><p>Outra forma de fazer os testes seria agrupa-los em um <code>@testset</code></p><pre><code class="language-julia">@testset &quot;Áreas de Figuras Geométricas&quot; begin
+    @test area(rect) == 2
+    @test area(triang) == 1
+end</code></pre><p>A vantagem de fazer os testes com <code>@testset</code> é que no final dos testes a macro mostra um resumo dos testes no console</p><pre><code class="language-none">Test Summary:                | Pass  Total
+Áreas de Figuras Geométricas |    2      2</code></pre><p>para mais informações ver <a href="https://docs.julialang.org/en/v0.6.1/stdlib/test/">Unit Tests</a></p><footer><hr/><a class="previous" href="../../"><span class="direction">Previous</span><span class="title">Home</span></a></footer></article></body></html>
