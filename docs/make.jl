@@ -1,11 +1,10 @@
-using Documenter
+using Documenter, Ensino
 
 makedocs(
-    modules = [Documenter],
-    format = Documenter.HTML(
-        # Use clean URLs, unless built as a "local" build
-        prettyurls = false
-    ),
+    modules = [Ensino],
+    doctest  = false,
+    clean    = true,
+    format   = :html,
     assets = ["assets/logo.ico"],
     sitename = "Ensino Lamps",
     authors = "Guilherme Bodin and contributors.",
@@ -15,4 +14,8 @@ makedocs(
             "Julia" => "julia/julia.md"
             ]
     ]
+)
+
+deploydocs(
+    repo = "github.com/LAMPSPUC/Ensino.jl.git",
 )
