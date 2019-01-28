@@ -1,3 +1,2 @@
 # Ensino LAMPS
 
-Awsome!
