@@ -4,15 +4,14 @@ makedocs(
     modules = [Ensino],
     doctest  = false,
     clean    = true,
-    format   = :html,
+    format   = Documenter.HTML(),
     assets = ["assets/logo.ico"],
     sitename = "Ensino Lamps",
     authors = "Guilherme Bodin and contributors.",
     pages = [
-        "Home" => "index.md",
-        "Ferramentas" => Any[
-            "Julia" => "julia/julia.md"
-            ]
+        "Home" => "index.md",    
+        "julia/julia.md",
+        "julia/jump.md"
     ]
 )
 
