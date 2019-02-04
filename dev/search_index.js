@@ -64,4 +64,20 @@ var documenterSearchIndex = {"docs": [
     "text": "O Julia tem uma biblioteca específica para realizar testes unitários, aqui estão alguns exemplos rápidos do uso da biblioteca. Vamos usar os pacotes ja usados como exemplo Rect e Triang. digamos que a título de teste unitário do módulo gostariamos de checar se as áreas estão sendo calculadas de forma correta. Nesse caso temos uma grande vantagem, as áreas são super fáceis de calcular analiticamente! :)using Base.Test, Shape, Triang, Rect\n\nrect = Rectangle(1.0, 2.0)\ntriang = Triangle(1.0, 2.0)\n\narea(rect)    #Área = 2\narea(triang)  #Área = 1Para testa o código podemos usar a macro @test no mesmo arquivo adicionando @test area(rect) == 2\n@test area(triang) == 1Outra forma de fazer os testes seria agrupa-los em um @testset@testset \"Áreas de Figuras Geométricas\" begin\n    @test area(rect) == 2\n    @test area(triang) == 1\nendA vantagem de fazer os testes com @testset é que no final dos testes a macro mostra um resumo dos testes no consoleTest Summary:                | Pass  Total\nÁreas de Figuras Geométricas |    2      2para mais informações ver Unit Tests"
 },
 
+{
+    "location": "julia/jump/#",
+    "page": "JuMP",
+    "title": "JuMP",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "julia/jump/#JuMP-1",
+    "page": "JuMP",
+    "title": "JuMP",
+    "category": "section",
+    "text": ""
+},
+
 ]}
