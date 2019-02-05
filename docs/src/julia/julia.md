@@ -1,5 +1,81 @@
 # Julia
 
+[Documentação Julia](https://docs.julialang.org/en/v1.0/) - Documentação oficial
+
+Links úteis para aprender Julia
+
+* [Julia no youtube](https://www.youtube.com/channel/UC9IuUwwE2xdjQUT_LMLONoA)
+* [Programação em Julia](https://www.dropbox.com/sh/36cw2h49n39ilga/AADCTNPmPNkkrN3FCCfPAH8ga?dl=0)
+* [A Deep Introduction to Julia for Data Science and Scientific Computing](http://ucidatascienceinitiative.github.io/IntroToJulia/)
+
+## Instalação
+
+Para instalar julia basta seguir os passos neste [link](https://docs.julialang.org/en/v1.0/manual/getting-started/)
+
+## IDEs
+
+Uma vez o julia instalado no seu computador você precisará de uma IDE (Integrated Development Environment) para desnvolver o seu código. Os mais comuns para desenvolvimento em Julia são:
+
+* [Atom](https://atom.io/)
+* [Vscode](https://code.visualstudio.com/)
+
+Não existe um melhor, mas escolha um e fique com ele até se sentir a vontade para criar projetos e rodar os códigos.
+
+## Help
+
+Um atalho rápido para entender o uso de uma função é o help do terminal. Imagine que para a sua aplicação você precisa da função `findmin` mas não sabe como usá-la. Ao digitar `?` em um terminal julia ele deve se tornar um terminal help. Agora podemos digitar o nome da função para entender o seu uso
+
+```julia
+help?> findmin
+```
+
+O resultado deve ser algo do tipo
+
+```julia
+search: findmin findmin! findmax findmax!
+
+  findmin(itr) -> (x, index)
+
+  Return the minimum element of the collection itr and its index. If there are
+  multiple minimal elements, then the first one will be returned. If any data
+  element is NaN, this element is returned. The result is in line with min.
+
+  The collection must not be empty.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> findmin([8,0.1,-9,pi])
+  (-9.0, 3)
+  
+  julia> findmin([7,1,1,6])
+  (1, 2)
+  
+  julia> findmin([7,1,1,NaN])
+  (NaN, 4)
+
+  ────────────────────────────────────────────────────────────────────────────
+
+  findmin(A; dims) -> (minval, index)
+
+  For an array input, returns the value and index of the minimum over the
+  given dimensions. NaN is treated as less than all other values.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> A = [1.0 2; 3 4]
+  2×2 Array{Float64,2}:
+   1.0  2.0
+   3.0  4.0
+  
+  julia> findmin(A, dims=1)
+  ([1.0 2.0], CartesianIndex{2}[CartesianIndex(1, 1) CartesianIndex(1, 2)])
+  
+  julia> findmin(A, dims=2)
+  ([1.0; 3.0], CartesianIndex{2}[CartesianIndex(1, 1); CartesianIndex(2, 1)])
+```
+
 ## Tipos
 Para realizar a modelagem de tipos dentro dos módulos é necessário ter uma estrutra de dados em mente, o que não é óbvio. Independente da estrutura de dados escolhida usamos tipos abstratos e tipos compósitos. Como exemplo de estrutura de dados para exemplificar a modelagem vamos modelar formas geométricas.
 Como existem muitas formas geométricas poderíamos dizer que formas geométricas são de certa forma um conceito abstrato, o que encaixa perfeitamente na modelização por tipo abstrato
@@ -47,7 +123,7 @@ triang = Triangle(1.0, 2.0)
 
 Tipos compósitos podem herdar métodos de bibliotecas específicas, para mais informações: [Composite over inheritance](https://en.wikipedia.org/wiki/Composition_over_inheritance), [Composition vs Inheritance](https://www.youtube.com/watch?v=dYUZiJEy0JE)
 
-Para mais informações [Types](https://docs.julialang.org/en/v0.6.1/manual/types/#) e [Constructors](https://docs.julialang.org/en/v0.6.1/manual/constructors/)
+Para mais informações [Types](https://docs.julialang.org/en/v1.0/manual/types/) e [Constructors](https://docs.julialang.org/en/v1.0/manual/constructors/)
 
 ## Módulos
 Agora imagine que exista um módulo que trate unicamente de retângulos ```Rect```, vamos assumir que este módulos possua apenas uma função, calcular a área da figura geométrica.
@@ -107,7 +183,7 @@ end
 end #end module
 ```
 
-Para mais informações [Modules](https://docs.julialang.org/en/v0.6.1/manual/modules/)
+Para mais informações [Modules](https://docs.julialang.org/en/v1.0/manual/modules/)
 
 
 ## Interface Comum
@@ -215,11 +291,11 @@ usar exemplo pessoa ou pensar em algo que faça sentido para shape
 
 Links úteis para se aprofundar [Modular Algorithms for Scientific Computing in Julia](http://www.stochasticlifestyle.com/modular-algorithms-scientific-computing-julia/)
 
-## Base.Test
+## Test
 O Julia tem uma biblioteca específica para realizar testes unitários, aqui estão alguns exemplos rápidos do uso da biblioteca. Vamos usar os pacotes ja usados como exemplo ```Rect``` e ```Triang```.
 digamos que a título de teste unitário do módulo gostariamos de checar se as áreas estão sendo calculadas de forma correta. Nesse caso temos uma grande vantagem, as áreas são super fáceis de calcular analiticamente! :)
 ```julia
-using Base.Test, Shape, Triang, Rect
+using Test, Shape, Triang, Rect
 
 rect = Rectangle(1.0, 2.0)
 triang = Triangle(1.0, 2.0)
@@ -247,4 +323,4 @@ Test Summary:                | Pass  Total
 
 
 
-para mais informações ver [Unit Tests](https://docs.julialang.org/en/v0.6.1/stdlib/test/)
+para mais informações ver [Unit Testing](https://docs.julialang.org/en/v1.0/stdlib/Test/)
