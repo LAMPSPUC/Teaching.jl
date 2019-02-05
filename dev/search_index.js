@@ -29,7 +29,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Julia",
     "title": "Julia",
     "category": "section",
-    "text": ""
+    "text": "Documentação Julia - Documentação oficialLinks úteis para aprender JuliaJulia no youtube\nProgramação em Julia\nA Deep Introduction to Julia for Data Science and Scientific Computing"
+},
+
+{
+    "location": "julia/julia/#Instalação-1",
+    "page": "Julia",
+    "title": "Instalação",
+    "category": "section",
+    "text": "Para instalar julia basta seguir os passos neste link"
+},
+
+{
+    "location": "julia/julia/#IDEs-1",
+    "page": "Julia",
+    "title": "IDEs",
+    "category": "section",
+    "text": "Uma vez o julia instalado no seu computador você precisará de uma IDE (Integrated Development Environment) para desnvolver o seu código. Os mais comuns para desenvolvimento em Julia são:Atom\nVscodeNão existe um melhor, mas escolha um e fique com ele até se sentir a vontade para criar projetos e rodar os códigos."
+},
+
+{
+    "location": "julia/julia/#Help-1",
+    "page": "Julia",
+    "title": "Help",
+    "category": "section",
+    "text": "Um atalho rápido para entender o uso de uma função é o help do terminal. Imagine que para a sua aplicação você precisa da função findmin mas não sabe como usá-la. Ao digitar ? em um terminal julia ele deve se tornar um terminal help. Agora podemos digitar o nome da função para entender o seu usohelp?> findminO resultado deve ser algo do tiposearch: findmin findmin! findmax findmax!\n\n  findmin(itr) -> (x, index)\n\n  Return the minimum element of the collection itr and its index. If there are\n  multiple minimal elements, then the first one will be returned. If any data\n  element is NaN, this element is returned. The result is in line with min.\n\n  The collection must not be empty.\n\n  Examples\n  ≡≡≡≡≡≡≡≡≡≡\n\n  julia> findmin([8,0.1,-9,pi])\n  (-9.0, 3)\n  \n  julia> findmin([7,1,1,6])\n  (1, 2)\n  \n  julia> findmin([7,1,1,NaN])\n  (NaN, 4)\n\n  ────────────────────────────────────────────────────────────────────────────\n\n  findmin(A; dims) -> (minval, index)\n\n  For an array input, returns the value and index of the minimum over the\n  given dimensions. NaN is treated as less than all other values.\n\n  Examples\n  ≡≡≡≡≡≡≡≡≡≡\n\n  julia> A = [1.0 2; 3 4]\n  2×2 Array{Float64,2}:\n   1.0  2.0\n   3.0  4.0\n  \n  julia> findmin(A, dims=1)\n  ([1.0 2.0], CartesianIndex{2}[CartesianIndex(1, 1) CartesianIndex(1, 2)])\n  \n  julia> findmin(A, dims=2)\n  ([1.0; 3.0], CartesianIndex{2}[CartesianIndex(1, 1); CartesianIndex(2, 1)])"
 },
 
 {
@@ -57,11 +81,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "julia/julia/#Base.Test-1",
+    "location": "julia/julia/#Test-1",
     "page": "Julia",
-    "title": "Base.Test",
+    "title": "Test",
     "category": "section",
-    "text": "O Julia tem uma biblioteca específica para realizar testes unitários, aqui estão alguns exemplos rápidos do uso da biblioteca. Vamos usar os pacotes ja usados como exemplo Rect e Triang. digamos que a título de teste unitário do módulo gostariamos de checar se as áreas estão sendo calculadas de forma correta. Nesse caso temos uma grande vantagem, as áreas são super fáceis de calcular analiticamente! :)using Base.Test, Shape, Triang, Rect\n\nrect = Rectangle(1.0, 2.0)\ntriang = Triangle(1.0, 2.0)\n\narea(rect)    #Área = 2\narea(triang)  #Área = 1Para testa o código podemos usar a macro @test no mesmo arquivo adicionando @test area(rect) == 2\n@test area(triang) == 1Outra forma de fazer os testes seria agrupa-los em um @testset@testset \"Áreas de Figuras Geométricas\" begin\n    @test area(rect) == 2\n    @test area(triang) == 1\nendA vantagem de fazer os testes com @testset é que no final dos testes a macro mostra um resumo dos testes no consoleTest Summary:                | Pass  Total\nÁreas de Figuras Geométricas |    2      2para mais informações ver Unit Tests"
+    "text": "O Julia tem uma biblioteca específica para realizar testes unitários, aqui estão alguns exemplos rápidos do uso da biblioteca. Vamos usar os pacotes ja usados como exemplo Rect e Triang. digamos que a título de teste unitário do módulo gostariamos de checar se as áreas estão sendo calculadas de forma correta. Nesse caso temos uma grande vantagem, as áreas são super fáceis de calcular analiticamente! :)using Test, Shape, Triang, Rect\n\nrect = Rectangle(1.0, 2.0)\ntriang = Triangle(1.0, 2.0)\n\narea(rect)    #Área = 2\narea(triang)  #Área = 1Para testa o código podemos usar a macro @test no mesmo arquivo adicionando @test area(rect) == 2\n@test area(triang) == 1Outra forma de fazer os testes seria agrupa-los em um @testset@testset \"Áreas de Figuras Geométricas\" begin\n    @test area(rect) == 2\n    @test area(triang) == 1\nendA vantagem de fazer os testes com @testset é que no final dos testes a macro mostra um resumo dos testes no consoleTest Summary:                | Pass  Total\nÁreas de Figuras Geométricas |    2      2para mais informações ver Unit Testing"
 },
 
 {
