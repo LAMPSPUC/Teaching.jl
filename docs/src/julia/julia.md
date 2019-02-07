@@ -4,9 +4,9 @@
 
 Links úteis para aprender Julia
 
+* [Julia Learning](https://julialang.org/learning/)
 * [Julia no youtube](https://www.youtube.com/channel/UC9IuUwwE2xdjQUT_LMLONoA)
 * [Programação em Julia](https://www.dropbox.com/sh/36cw2h49n39ilga/AADCTNPmPNkkrN3FCCfPAH8ga?dl=0)
-* [A Deep Introduction to Julia for Data Science and Scientific Computing](http://ucidatascienceinitiative.github.io/IntroToJulia/)
 
 ## Instalação
 
