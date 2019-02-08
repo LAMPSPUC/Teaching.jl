@@ -4,13 +4,15 @@
 
 Links úteis para aprender Julia
 
+* [Julia Learning](https://julialang.org/learning/)
 * [Julia no youtube](https://www.youtube.com/channel/UC9IuUwwE2xdjQUT_LMLONoA)
 * [Programação em Julia](https://www.dropbox.com/sh/36cw2h49n39ilga/AADCTNPmPNkkrN3FCCfPAH8ga?dl=0)
-* [A Deep Introduction to Julia for Data Science and Scientific Computing](http://ucidatascienceinitiative.github.io/IntroToJulia/)
 
 ## Instalação
 
-Para instalar julia basta seguir os passos neste [link](https://docs.julialang.org/en/v1.0/manual/getting-started/)
+Para instalar julia basta seguir os passos neste [link](https://julialang.org/downloads/)
+
+Recomendamos baixar a versão 1.0.3 (Long-term support release)
 
 ## IDEs
 
@@ -134,53 +136,65 @@ Considere o seguinte módulo
 ```julia
 module Rect
 
-using Shape             #Necessário para poder usar a interface comum
+export Rectangle, area  # Métodos visiveis pelo usuário que fez using Rect
 
-export Rectangle, area  #Métodos visiveis pelo usuário que fez using Rect
-
-mutable struct Rectangle <: GeometricShape
+mutable struct Rectangle
     formula::String
     base::Float64
     height::Float64
 end
 
-"""Construtor do tipo Rectangle"""
+"""
+    Rectangle(base::Float64, height::Float64)
+
+Construtor do tipo Rectangle
+"""
 function Rectangle(base::Float64, height::Float64)
     Rectangle("base*height", base, height)
 end
 
-"""Calcula a área de um retângulo declarado como Rectangle"""
+"""
+    area(rectangle::Rectangle)
+
+Calcula a área de um retângulo declarado como Rectangle
+"""
 function area(rectangle::Rectangle)
     return (rectangle.base)*(rectangle.height)
 end
 
-end #end module
+end # end module
 ```
 Analogamente
 ```julia
 module Triang
 
-using Shape             #Necessário para poder usar a interface comum
+export Triangle, area   # Métodos visiveis pelo usuário que fez using Triang
 
-export Triangle, area   #Métodos visiveis pelo usuário que fez using Rect
-
-mutable struct Triangle <: GeometricShape
+mutable struct Triangle
     formula::String
     base::Float64
     height::Float64
 end
 
-"""Construtor do tipo Triangle"""
+"""
+    Triangle(base::Float64, height::Float64)
+
+Construtor do tipo Triangle
+"""
 function Triangle(base::Float64, height::Float64)
     Triangle("(base*height)/2", base, height)
 end
 
-"""Calcula a área de um triângulo declarado como Triangle"""
+"""
+    area(triangle::Triangle)
+
+Calcula a área de um triângulo declarado como Triangle
+"""
 function area(triangle::Triangle)
     return (triangle.base)*(triangle.height)/2
 end
 
-end #end module
+end # end module
 ```
 
 Para mais informações [Modules](https://docs.julialang.org/en/v1.0/manual/modules/)
@@ -189,7 +203,7 @@ Para mais informações [Modules](https://docs.julialang.org/en/v1.0/manual/modu
 ## Interface Comum
 Agora gostaríamos de criar uma interface que permitisse o cálculo da área de qualquer figura geométrica e a informação da fórmula da área, o único requisito para poder calcular tal área é que **alguém** tenha criado um módulo para a tal figura geométrica com a função específica para calcular a área.
 
-Alguns exemplos clássicos de módulos que funcionam como interface comum seriam ```JuMP``` e ```Plots```. Esses módulos reunem uma série de funções básicas que podem ser realizadas de formas diferentes, um exemplo fácil é a função ```solve```, podemos resolver um problema de programação linear usando solvers diferentes como ```Clp``` e ```Gurobi```
+Alguns exemplos clássicos de módulos que funcionam como interface comum seriam ```JuMP``` e ```Plots```. Esses módulos reunem uma série de funções básicas que podem ser realizadas de formas diferentes, um exemplo fácil é a função ```optimize!```, podemos resolver um problema de programação linear usando solvers diferentes como ```Clp``` e ```Gurobi```
 
 A interface seria o módulo Shape
 ```julia
@@ -199,17 +213,25 @@ export area, printformula, GeometricShape
 
 abstract type GeometricShape end
 
-"""Calcula a área de uma figura geométrica do tipo GeometricShape"""
+"""
+    area(shape::GeometricShape)
+
+Calcula a área de uma figura geométrica do tipo GeometricShape
+"""
 function area(shape::GeometricShape)
      error("function not defined for $(typeof(shape))")
 end
 
-"""Escreve a fórmula da área de uma figura geométrica do tipo GeometricShape"""
+"""
+    printformula(shape::GeometricShape)
+
+Escreve a fórmula da área de uma figura geométrica do tipo GeometricShape
+"""
 function printformula(shape::GeometricShape)
     print(shape.formula)
 end
 
-end #end module
+end # end module
 ```
 
 Agora dado que existe esse módulo de interface comum qualquer desenvolvedor poderá criar módulos independentes que se aproveitam da estrutura do Shape.
@@ -218,35 +240,38 @@ Podemos integrar o módulo Rect e Triang como no exemplo abaixo
 ```julia
 module Rect
 
-using Shape             #Necessário para poder usar a interface comum
+using Shape             # Necessário para poder usar a interface comum
 
-export Rectangle, area  #Métodos visiveis pelo usuário que fez using Rect
+export Rectangle, area  # Métodos visiveis pelo usuário que fez using Rect
 
-mutable struct Rectangle <: GeometricShape
+mutable struct Rectangle <: GeometricShape # GeometricShape foi definido pelo módulo Shape
     formula::String
     base::Float64
     height::Float64
 end
 
-"""Construtor do tipo Rectangle"""
+"""
+    Rectangle(base::Float64, height::Float64)
+
+Construtor do tipo Rectangle
+"""
 function Rectangle(base::Float64, height::Float64)
     Rectangle("base*height", base, height)
 end
 
-"""Calcula a área de um retângulo declarado como Rectangle"""
 function Shape.area(rectangle::Rectangle)
     return (rectangle.base)*(rectangle.height)
 end
 
-end #end module
+end # end module
 ```
 
 ```julia
 module Triang
 
-using Shape             #Necessário para poder usar a interface comum
+using Shape             # Necessário para poder usar a interface comum
 
-export Triangle, area   #Métodos visiveis pelo usuário que fez using Rect
+export Triangle, area   # Métodos visiveis pelo usuário que fez using Rect
 
 mutable struct Triangle <: GeometricShape
     formula::String
@@ -254,17 +279,20 @@ mutable struct Triangle <: GeometricShape
     height::Float64
 end
 
-"""Construtor do tipo Triangle"""
+"""
+    Triangle(base::Float64, height::Float64)
+
+Construtor do tipo Triangle
+"""
 function Triangle(base::Float64, height::Float64)
     Triangle("(base*height)/2", base, height)
 end
 
-"""Calcula a área de um triângulo declarado como Triangle"""
 function Shape.area(triangle::Triangle)
     return (triangle.base)*(triangle.height)/2
 end
 
-end #end module
+end # end module
 ```
 
 
@@ -300,8 +328,8 @@ using Test, Shape, Triang, Rect
 rect = Rectangle(1.0, 2.0)
 triang = Triangle(1.0, 2.0)
 
-area(rect)    #Área = 2
-area(triang)  #Área = 1
+area(rect)    # Área = 2
+area(triang)  # Área = 1
 ```
 Para testa o código podemos usar a macro ```@test``` no mesmo arquivo adicionando 
 ```julia
