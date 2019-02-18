@@ -105,11 +105,43 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "julia/jump/#Exemplo-da-produção-de-armários-e-berços-1",
+    "location": "julia/jump/#Exemplo-Básico-1",
     "page": "JuMP",
-    "title": "Exemplo da produção de armários e berços",
+    "title": "Exemplo Básico",
     "category": "section",
-    "text": "Usaremos esse exemplo para mostrar as ferramentas básicas do JuMP,beginalign\n\nmax_x geq 0  sum 4x_1 + 3x_2\n\nmboxsa   nonumber \n 2x_1 + x_2 leq 4 \n x_1 + 2x_2 leq 4 \n\nendalignPara escrever o problema no JuMP deveremos usar as macros (funções que tem @ na frente) para definir variáveis (@variables), restrições (@constraint) e a função objetivo (@objective)using Julia, Clp\n\nmodeloProd = Model(solver = ClpSolver()) # Cria ma variável modeloProd onde podemos escrevr variáveis, restrições, qual solver usar etc.\n\n@variable(modeloProd, x[i = 1:2] >= 0) # Definimos que em modeloProd existe uma variável x com duas entradas maiores que 0\n\n# Definimos que em modeloProd existem restrições \n@constraint(modeloProd, 2*x[1] + x[2] <= 4)\n@constraint(modeloProd, x[1] + 2*x[2] <= 4)\n\n# Definimos que em modeloProd existe uma função objetivo\n@objective(modeloProd, Max, 4*x[1] + 3*x[2])"
+    "text": ""
+},
+
+{
+    "location": "julia/jump/#Formulação-1",
+    "page": "JuMP",
+    "title": "Formulação",
+    "category": "section",
+    "text": "Usaremos o exemplo da produção de berços e armários para mostrar as ferramentas básicas do JuMP, o modelo pode ser formulado da seguinte forma:beginalign\n\nmax_x geq 0  sum 4x_1 + 3x_2\n\nmboxsa   nonumber \n 2x_1 + x_2 leq 4 \n x_1 + 2x_2 leq 4 \n\nendalign"
+},
+
+{
+    "location": "julia/jump/#Criando-e-resolvendo-o-modelo-1",
+    "page": "JuMP",
+    "title": "Criando e resolvendo o modelo",
+    "category": "section",
+    "text": "Para escrever o problema no JuMP deveremos usar as macros (funções que tem @ na frente) para definir variáveis (@variables), restrições (@constraint) e a função objetivo (@objective)using JuMP, Clp\n\nmodeloProd = Model(with_optimizer(Clp.Optimizer)) # Cria ma variável modeloProd onde podemos escrevr variáveis, restrições, qual solver usar etc.\n\n@variable(modeloProd, x[i = 1:2] >= 0) # Definimos que em modeloProd existe uma variável x com duas entradas maiores que 0\n\n# Definimos que em modeloProd existem restrições (uma associada à armários e outra à berços)\n@constraint(modeloProd, armarios, 2*x[1] + x[2] <= 4)\n@constraint(modeloProd, bercos, x[1] + 2*x[2] <= 4)\n\n# Definimos que em modeloProd existe uma função objetivo\n@objective(modeloProd, Max, 4*x[1] + 3*x[2])\n\nJuMP.optimize!(modeloProd) # Resolve o problema de otimização\n\nJuMP.value.(x) #Valor das variáveis x\nJuMP.objective_value(modeloProd) #Valor da função objetivo no ótimo"
+},
+
+{
+    "location": "julia/jump/#Valores-das-variáveis-duais-1",
+    "page": "JuMP",
+    "title": "Valores das variáveis duais",
+    "category": "section",
+    "text": "É possível avaliar o valor das variáveis duais associadas a cada restrição usando a função dualusing JuMP, Clp\n\nmodeloProd = Model(with_optimizer(Clp.Optimizer))\n\n@variable(modeloProd, x[i = 1:2] >= 0)\n\n@constraint(modeloProd, armarios, 2*x[1] + x[2] <= 4)\n@constraint(modeloProd, bercos, x[1] + 2*x[2] <= 4)\n\n@objective(modeloProd, Max, 4*x[1] + 3*x[2])\n\nJuMP.optimize!(modeloProd)\n\n# Valor das variáveis duais associadas a cada restrição\ndual(armarios)\ndual(bercos)"
+},
+
+{
+    "location": "julia/jump/#Como-obter-as-constantes-A,-b-e-c-de-um-problema-de-programação-linear-1",
+    "page": "JuMP",
+    "title": "Como obter as constantes A, b e c de um problema de programação linear",
+    "category": "section",
+    "text": ""
 },
 
 ]}
