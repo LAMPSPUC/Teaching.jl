@@ -144,4 +144,44 @@ var documenterSearchIndex = {"docs": [
     "text": ""
 },
 
+{
+    "location": "julia/plots/#",
+    "page": "Plots",
+    "title": "Plots",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "julia/plots/#Plots-1",
+    "page": "Plots",
+    "title": "Plots",
+    "category": "section",
+    "text": "Existem várias bibliotecas para construir plots em julia, Recomendamos usar Plots.jl"
+},
+
+{
+    "location": "julia/plots/#Backends-1",
+    "page": "Plots",
+    "title": "Backends",
+    "category": "section",
+    "text": ""
+},
+
+{
+    "location": "git/git/#",
+    "page": "Git",
+    "title": "Git",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "git/git/#Git-1",
+    "page": "Git",
+    "title": "Git",
+    "category": "section",
+    "text": "Onde aprender:A simple guide\nGit book"
+},
+
 ]}
