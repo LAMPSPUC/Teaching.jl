@@ -1,5 +1,5 @@
-using Ensino, Test
+using Teaching, Test
 
-@testset "Ensino.jl" begin
+@testset "Teaching.jl" begin
     @test teste() == 1
 end

@@ -1,10 +1,10 @@
-module Ensino
+module Teaching
 
 #Exports
-export teste
+export test
 
 #Functions
-function teste()
+function test()
     return 1
 end
 
