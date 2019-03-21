@@ -1,12 +1,12 @@
-using Documenter, Ensino
+using Documenter, Teaching
 
 makedocs(
-    modules = [Ensino],
+    modules = [Teaching],
     doctest  = false,
     clean    = true,
     format   = Documenter.HTML(),
     assets = ["assets/logo.ico"],
-    sitename = "Ensino Lamps",
+    sitename = "Lamps Teaching",
     authors = "Guilherme Bodin and contributors.",
     pages = [
         "Home" => "index.md",    
@@ -18,5 +18,5 @@ makedocs(
 )
 
 deploydocs(
-    repo = "github.com/LAMPSPUC/Ensino.jl.git",
+    repo = "github.com/LAMPSPUC/Teaching.jl.git",
 )

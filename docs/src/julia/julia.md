@@ -23,6 +23,8 @@ Uma vez o julia instalado no seu computador você precisará de uma IDE (Integra
 
 Não existe um melhor, mas escolha um e fique com ele até se sentir a vontade para criar projetos e rodar os códigos.
 
+## Jupyter Notebooks
+
 ## Help
 
 Um atalho rápido para entender o uso de uma função é o help do terminal. Imagine que para a sua aplicação você precisa da função `findmin` mas não sabe como usá-la. Ao digitar `?` em um terminal julia ele deve se tornar um terminal help. Agora podemos digitar o nome da função para entender o seu uso
@@ -348,7 +350,5 @@ A vantagem de fazer os testes com ```@testset``` é que no final dos testes a ma
 Test Summary:                | Pass  Total
 Áreas de Figuras Geométricas |    2      2
 ```
-
-
 
 para mais informações ver [Unit Testing](https://docs.julialang.org/en/v1.0/stdlib/Test/)

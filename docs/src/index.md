@@ -1,2 +1,2 @@
-# Ensino LAMPS
+# LAMPS Teaching
 
