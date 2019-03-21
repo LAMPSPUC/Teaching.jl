@@ -9,9 +9,9 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "#Ensino-LAMPS-1",
+    "location": "#LAMPS-Teaching-1",
     "page": "Home",
-    "title": "Ensino LAMPS",
+    "title": "LAMPS Teaching",
     "category": "section",
     "text": ""
 },
@@ -46,6 +46,14 @@ var documenterSearchIndex = {"docs": [
     "title": "IDEs",
     "category": "section",
     "text": "Uma vez o julia instalado no seu computador você precisará de uma IDE (Integrated Development Environment) para desnvolver o seu código. Os mais comuns para desenvolvimento em Julia são:Atom\nVscodeNão existe um melhor, mas escolha um e fique com ele até se sentir a vontade para criar projetos e rodar os códigos."
+},
+
+{
+    "location": "julia/julia/#Jupyter-Notebooks-1",
+    "page": "Julia",
+    "title": "Jupyter Notebooks",
+    "category": "section",
+    "text": ""
 },
 
 {
