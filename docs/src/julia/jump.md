@@ -11,9 +11,9 @@ Existem inclusve linguagens e softwares criados unica e exclusivamente para isso
 
 A melhor forma de descobrir as ferramentas oferecidas pela biblioteca é pela [documentação](http://www.juliaopt.org/JuMP.jl/stable/)
 
-## Exemplo Básico
+## Basic Example
 
-### Formulação
+### Formulation
 
 Usaremos o exemplo da produção de berços e armários para mostrar as ferramentas básicas do JuMP,
 o modelo pode ser formulado da seguinte forma:
@@ -37,44 +37,17 @@ Para escrever o problema no JuMP deveremos usar as macros (funções que tem @ n
 ```julia
 using JuMP, Clp
 
-modeloProd = Model(with_optimizer(Clp.Optimizer)) # Cria ma variável modeloProd onde podemos escrevr variáveis, restrições, qual solver usar etc.
+model = Model(with_optimizer(Clp.Optimizer))
 
-@variable(modeloProd, x[i = 1:2] >= 0) # Definimos que em modeloProd existe uma variável x com duas entradas maiores que 0
+@variable(model, x[i = 1:2] >= 0)
 
-# Definimos que em modeloProd existem restrições (uma associada à armários e outra à berços)
-@constraint(modeloProd, armarios, 2*x[1] + x[2] <= 4)
-@constraint(modeloProd, bercos, x[1] + 2*x[2] <= 4)
+@constraint(model, armarios, 2*x[1] + x[2] <= 4)
+@constraint(model, bercos, x[1] + 2*x[2] <= 4)
 
-# Definimos que em modeloProd existe uma função objetivo
-@objective(modeloProd, Max, 4*x[1] + 3*x[2])
+@objective(model, Max, 4*x[1] + 3*x[2])
 
-JuMP.optimize!(modeloProd) # Resolve o problema de otimização
+JuMP.optimize!(model) 
 
-JuMP.value.(x) #Valor das variáveis x
-JuMP.objective_value(modeloProd) #Valor da função objetivo no ótimo
+JuMP.value.(x) 
+JuMP.objective_value(model) 
 ```
-
-### Valores das variáveis duais
-
-É possível avaliar o valor das variáveis duais associadas a cada restrição usando a função `dual`
-
-```julia
-using JuMP, Clp
-
-modeloProd = Model(with_optimizer(Clp.Optimizer))
-
-@variable(modeloProd, x[i = 1:2] >= 0)
-
-@constraint(modeloProd, armarios, 2*x[1] + x[2] <= 4)
-@constraint(modeloProd, bercos, x[1] + 2*x[2] <= 4)
-
-@objective(modeloProd, Max, 4*x[1] + 3*x[2])
-
-JuMP.optimize!(modeloProd)
-
-# Valor das variáveis duais associadas a cada restrição
-dual(armarios)
-dual(bercos)
-```
-
-### Como obter as constantes A, b e c de um problema de programação linear

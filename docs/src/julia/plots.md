@@ -1,5 +1,3 @@
 # Plots
 
-Existem várias bibliotecas para construir plots em julia, Recomendamos usar [Plots.jl](https://github.com/JuliaPlots/Plots.jl)
-
-## Backends
+There are several libraries to build plots in julia, we recommend using [Plots.jl](https://github.com/JuliaPlots/Plots.jl)
