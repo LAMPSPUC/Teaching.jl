@@ -23,8 +23,6 @@ Once Julia is installed on your computer you will need an Integrated Development
 
 Choose one and stay with it until you feel loose to create projects and run the codes.
 
-## Jupyter Notebooks
-
 ## Help
 
 A helpful shortcut to understanding the use of a function is the terminal help. Imagine that for your application you need the `findmin` function but do not know how to use it. When typing `?` into a  Julia terminal, it should become a Julia help terminal. Now we can enter the name of the function to understand its use
