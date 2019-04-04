@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Julia · Lamps Teaching</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/><link href="../../assets/logo.ico" rel="icon" type="image/x-icon"/></head><body><nav class="toc"><a href="../../index.html"><img class="logo" src="../../assets/logo.png" alt="Lamps Teaching logo"/></a><h1>Lamps Teaching</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../../search/"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../">Home</a></li><li class="current"><a class="toctext" href>Julia</a><ul class="internal"><li><a class="toctext" href="#Instalação-1">Instalação</a></li><li><a class="toctext" href="#IDEs-1">IDEs</a></li><li><a class="toctext" href="#Jupyter-Notebooks-1">Jupyter Notebooks</a></li><li><a class="toctext" href="#Help-1">Help</a></li><li><a class="toctext" href="#Tipos-1">Tipos</a></li><li><a class="toctext" href="#Módulos-1">Módulos</a></li><li><a class="toctext" href="#Interface-Comum-1">Interface Comum</a></li><li><a class="toctext" href="#Test-1">Test</a></li></ul></li><li><a class="toctext" href="../jump/">JuMP</a></li><li><a class="toctext" href="../plots/">Plots</a></li><li><a class="toctext" href="../../git/git/">Git</a></li></ul></nav><article id="docs"><header><nav><ul><li><a href>Julia</a></li></ul><a class="edit-page" href="https://github.com/LAMPSPUC/Teaching.jl/blob/master/docs/src/julia/julia.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>Julia</span><a class="fa fa-bars" href="#"></a></div></header><h1><a class="nav-anchor" id="Julia-1" href="#Julia-1">Julia</a></h1><p><a href="https://docs.julialang.org/en/v1.0/">Documentação Julia</a> - Documentação oficial</p><p>Links úteis para aprender Julia</p><ul><li><a href="https://julialang.org/learning/">Julia Learning</a></li><li><a href="https://www.youtube.com/channel/UC9IuUwwE2xdjQUT_LMLONoA">Julia no youtube</a></li><li><a href="https://www.dropbox.com/sh/36cw2h49n39ilga/AADCTNPmPNkkrN3FCCfPAH8ga?dl=0">Programação em Julia</a></li></ul><h2><a class="nav-anchor" id="Instalação-1" href="#Instalação-1">Instalação</a></h2><p>Para instalar julia basta seguir os passos neste <a href="https://julialang.org/downloads/">link</a></p><p>Recomendamos baixar a versão 1.0.3 (Long-term support release)</p><h2><a class="nav-anchor" id="IDEs-1" href="#IDEs-1">IDEs</a></h2><p>Uma vez o julia instalado no seu computador você precisará de uma IDE (Integrated Development Environment) para desnvolver o seu código. Os mais comuns para desenvolvimento em Julia são:</p><ul><li><a href="https://atom.io/">Atom</a></li><li><a href="https://code.visualstudio.com/">Vscode</a></li></ul><p>Não existe um melhor, mas escolha um e fique com ele até se sentir a vontade para criar projetos e rodar os códigos.</p><h2><a class="nav-anchor" id="Jupyter-Notebooks-1" href="#Jupyter-Notebooks-1">Jupyter Notebooks</a></h2><h2><a class="nav-anchor" id="Help-1" href="#Help-1">Help</a></h2><p>Um atalho rápido para entender o uso de uma função é o help do terminal. Imagine que para a sua aplicação você precisa da função <code>findmin</code> mas não sabe como usá-la. Ao digitar <code>?</code> em um terminal julia ele deve se tornar um terminal help. Agora podemos digitar o nome da função para entender o seu uso</p><pre><code class="language-julia">help?&gt; findmin</code></pre><p>O resultado deve ser algo do tipo</p><pre><code class="language-julia">search: findmin findmin! findmax findmax!
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Julia · Lamps Teaching</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/><link href="../../assets/logo.ico" rel="icon" type="image/x-icon"/></head><body><nav class="toc"><a href="../../index.html"><img class="logo" src="../../assets/logo.png" alt="Lamps Teaching logo"/></a><h1>Lamps Teaching</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../../search/"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../">Home</a></li><li class="current"><a class="toctext" href>Julia</a><ul class="internal"><li><a class="toctext" href="#Installation-1">Installation</a></li><li><a class="toctext" href="#IDEs-1">IDEs</a></li><li><a class="toctext" href="#Help-1">Help</a></li><li><a class="toctext" href="#Functions-1">Functions</a></li><li><a class="toctext" href="#Types-1">Types</a></li><li><a class="toctext" href="#Modules-1">Modules</a></li><li><a class="toctext" href="#Test-1">Test</a></li></ul></li><li><a class="toctext" href="../jupyternotebook/">Jupyter Notebook (Accessing class materials)</a></li><li><a class="toctext" href="../jump/">JuMP</a></li><li><a class="toctext" href="../plots/">Plots</a></li><li><a class="toctext" href="../../git/git/">Git</a></li></ul></nav><article id="docs"><header><nav><ul><li><a href>Julia</a></li></ul><a class="edit-page" href="https://github.com/LAMPSPUC/Teaching.jl/blob/master/docs/src/julia/julia.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>Julia</span><a class="fa fa-bars" href="#"></a></div></header><h1><a class="nav-anchor" id="Julia-1" href="#Julia-1">Julia</a></h1><p><a href="https://docs.julialang.org/en/v1.0/">Julia Documentation</a></p><p>Useful links: </p><ul><li><a href="https://julialang.org/learning/">Julia Learning</a></li><li><a href="https://www.youtube.com/channel/UC9IuUwwE2xdjQUT_LMLONoA">Julia no youtube</a></li><li><a href="https://www.dropbox.com/sh/36cw2h49n39ilga/AADCTNPmPNkkrN3FCCfPAH8ga?dl=0">Programação em Julia</a></li></ul><h2><a class="nav-anchor" id="Installation-1" href="#Installation-1">Installation</a></h2><p>To install Julia just follow the steps on this <a href="https://julialang.org/downloads/">link</a></p><p>We recommend downloading version 1.0.3 (Long-term support release)</p><h2><a class="nav-anchor" id="IDEs-1" href="#IDEs-1">IDEs</a></h2><p>Once Julia is installed on your computer you will need an Integrated Development Environment (IDE) to unpack your code. The most common ones are:</p><ul><li><a href="https://atom.io/">Atom</a></li><li><a href="https://code.visualstudio.com/">Vscode</a></li></ul><p>Choose one and stay with it until you feel loose to create projects and run the codes.</p><h2><a class="nav-anchor" id="Help-1" href="#Help-1">Help</a></h2><p>A helpful shortcut to understanding the use of a function is the terminal help. Imagine that for your application you need the <code>findmin</code> function but do not know how to use it. When typing <code>?</code> into a  Julia terminal, it should become a Julia help terminal. Now we can enter the name of the function to understand its use</p><pre><code class="language-Julia">help?&gt; findmin
+
+search: findmin findmin! findmax findmax!
 
   findmin(itr) -&gt; (x, index)
 
@@ -12,13 +14,13 @@
   Examples
   ≡≡≡≡≡≡≡≡≡≡
 
-  julia&gt; findmin([8,0.1,-9,pi])
+  Julia&gt; findmin([8,0.1,-9,pi])
   (-9.0, 3)
   
-  julia&gt; findmin([7,1,1,6])
+  Julia&gt; findmin([7,1,1,6])
   (1, 2)
   
-  julia&gt; findmin([7,1,1,NaN])
+  Julia&gt; findmin([7,1,1,NaN])
   (NaN, 4)
 
   ────────────────────────────────────────────────────────────────────────────
@@ -31,34 +33,34 @@
   Examples
   ≡≡≡≡≡≡≡≡≡≡
 
-  julia&gt; A = [1.0 2; 3 4]
+  Julia&gt; A = [1.0 2; 3 4]
   2×2 Array{Float64,2}:
    1.0  2.0
    3.0  4.0
   
-  julia&gt; findmin(A, dims=1)
+  Julia&gt; findmin(A, dims=1)
   ([1.0 2.0], CartesianIndex{2}[CartesianIndex(1, 1) CartesianIndex(1, 2)])
   
-  julia&gt; findmin(A, dims=2)
-  ([1.0; 3.0], CartesianIndex{2}[CartesianIndex(1, 1); CartesianIndex(2, 1)])</code></pre><h2><a class="nav-anchor" id="Tipos-1" href="#Tipos-1">Tipos</a></h2><p>Para realizar a modelagem de tipos dentro dos módulos é necessário ter uma estrutra de dados em mente, o que não é óbvio. Independente da estrutura de dados escolhida usamos tipos abstratos e tipos compósitos. Como exemplo de estrutura de dados para exemplificar a modelagem vamos modelar formas geométricas. Como existem muitas formas geométricas poderíamos dizer que formas geométricas são de certa forma um conceito abstrato, o que encaixa perfeitamente na modelização por tipo abstrato</p><pre><code class="language-julia">abstract type GeometricShape end</code></pre><p>Apesar de existirem infinitas formas geométricas vemos todos os dias retângulos e triângulos que podem ser concretamente modeladas. Para fazer a modelagem de retângulos precisamos saber quais são as especificações dos retângulos, no caso altura e largura. Poderíamos dizer que base e altura definem, compõem um retângulo e aqui identificamos que um retângulo pode ser modelado por um tipo compósito. Um argumento a mais possível para os retângulos seria uma string que diz a fórmula da sua área</p><pre><code class="language-julia">mutable struct Rectangle &lt;: GeometricShape
+  Julia&gt; findmin(A, dims=2)
+  ([1.0; 3.0], CartesianIndex{2}[CartesianIndex(1, 1); CartesianIndex(2, 1)])</code></pre><h2><a class="nav-anchor" id="Functions-1" href="#Functions-1">Functions</a></h2><h2><a class="nav-anchor" id="Types-1" href="#Types-1">Types</a></h2><p>To perform type modeling within the modules it is necessary to have a data structure in mind, which is not obvious. Regardless of the chosen data structure, we should use abstract and composite types. As an example of a data structure to exemplify modeling let us model geometric shapes. As there are many geometric shapes we could say that geometric shapes are in some way an abstract concept, which fits perfectly in the modelization by an abstract type.</p><pre><code class="language-Julia">abstract type GeometricShape end</code></pre><p>Although there are lots of geometric shapes we see rectangles and triangles that can be concretely modeled every day. To do the modeling of rectangles we need to know what are the specifications of the rectangles, we consider height and width and its area formula as a string. Our composite type is:</p><pre><code class="language-Julia">mutable struct Rectangle &lt;: GeometricShape
     formula::String
     base::Float64
     height::Float64
-end</code></pre><p>Analogamente os triângulos são definidos por base e altura</p><pre><code class="language-julia">mutable struct Triangle &lt;: GeometricShape
+end</code></pre><p>Analogously the triangles are defined by the base, the height, and the formula</p><pre><code class="language-Julia">mutable struct Triangle &lt;: GeometricShape
     formula::String
     base::Float64
     height::Float64
-end</code></pre><p>Ao declarar um tipo automaticamente um construtor é criado, ou seja, foi criada uma função para construir um retângulo e um triângulo, declarando de forma simples </p><pre><code class="language-julia">rect = Rectangle(&quot;base*height&quot;, 1.0, 2.0)
-triang = Triangle(&quot;(base*height)/2&quot;, 1.0, 2.0)</code></pre><p>criamos uma variável rect do tipo Rectangle e uma variável tring do tipo Triangle.</p><p>Como a fórmula para calcular a área de uma figura nunca muda poderíamos criar um novo construtor que ao receber os parâmetros base e height preenche automaticamente a fórmula tanto para triângulos quanto para retângulos</p><pre><code class="language-julia">function Rectangle(base::Float64, height::Float64)
+end</code></pre><p>When declaring a type automatically a constructor is created, that is, a function was created to construct a rectangle and a triangle, stating simply</p><pre><code class="language-Julia">rect = Rectangle(&quot;base*height&quot;, 1.0, 2.0)
+triang = Triangle(&quot;(base*height)/2&quot;, 1.0, 2.0)</code></pre><p>Since the formula for calculating the area of ​​a figure never changes we could create a new constructor which, upon receiving the base and height parameters, automatically fills the formula for both triangles and rectangles</p><pre><code class="language-Julia">function Rectangle(base::Float64, height::Float64)
     Rectangle(&quot;base*height&quot;, base, height)
 end
 
 function Triangle(base::Float64, height::Float64)
     Triangle(&quot;(base*height)/2&quot;, base, height)
-end</code></pre><p>Agora podemos construir retângulos e triângulos declarando apenas as suas dimensões</p><pre><code class="language-julia">rect = Rectangle(1.0, 2.0)
-triang = Triangle(1.0, 2.0)</code></pre><p>Tipos compósitos podem herdar métodos de bibliotecas específicas, para mais informações: <a href="https://en.wikipedia.org/wiki/Composition_over_inheritance">Composite over inheritance</a>, <a href="https://www.youtube.com/watch?v=dYUZiJEy0JE">Composition vs Inheritance</a></p><p>Para mais informações <a href="https://docs.julialang.org/en/v1.0/manual/types/">Types</a> e <a href="https://docs.julialang.org/en/v1.0/manual/constructors/">Constructors</a></p><h2><a class="nav-anchor" id="Módulos-1" href="#Módulos-1">Módulos</a></h2><p>Agora imagine que exista um módulo que trate unicamente de retângulos <code>Rect</code>, vamos assumir que este módulos possua apenas uma função, calcular a área da figura geométrica. Um módulo pode ter muitas variantes mas segue uma estrutura base, um módulo em geral possui tipos específicos, funções específicas e deve exportar as funções que os usuários do módulo podem utilizar</p><p>Considere o seguinte módulo</p><pre><code class="language-julia">module Rect
+end</code></pre><p>Now we can build this geometric shapes only providing base and height</p><pre><code class="language-Julia">rect = Rectangle(1.0, 2.0)
+triang = Triangle(1.0, 2.0)</code></pre><p>For more information <a href="https://docs.julialang.org/en/v1.0/manual/types/">Types</a> e <a href="https://docs.julialang.org/en/v1.0/manual/constructors/">Constructors</a></p><h2><a class="nav-anchor" id="Modules-1" href="#Modules-1">Modules</a></h2><p>Now imagine that there is a module that deals only with rectangles, let&#39;s assume that this module has only one function calculate the area of ​​the geometric figure. A module can have many variants but follows a basic structure.</p><pre><code class="language-Julia">module Rect
 
-export Rectangle, area  # Métodos visiveis pelo usuário que fez using Rect
+export Rectangle, area  # Functions that users can access when running `using Rect`
 
 mutable struct Rectangle
     formula::String
@@ -69,7 +71,7 @@ end
 &quot;&quot;&quot;
     Rectangle(base::Float64, height::Float64)
 
-Construtor do tipo Rectangle
+Constructor of the Rectangle type
 &quot;&quot;&quot;
 function Rectangle(base::Float64, height::Float64)
     Rectangle(&quot;base*height&quot;, base, height)
@@ -78,15 +80,15 @@ end
 &quot;&quot;&quot;
     area(rectangle::Rectangle)
 
-Calcula a área de um retângulo declarado como Rectangle
+Calculates the area of ​​a `Rectangle`
 &quot;&quot;&quot;
 function area(rectangle::Rectangle)
     return (rectangle.base)*(rectangle.height)
 end
 
-end # end module</code></pre><p>Analogamente</p><pre><code class="language-julia">module Triang
+end # end module</code></pre><p>Another one for triangles</p><pre><code class="language-Julia">module Triang
 
-export Triangle, area   # Métodos visiveis pelo usuário que fez using Triang
+export Triangle, area   # Functions that users can access when running `using Triang`
 
 mutable struct Triangle
     formula::String
@@ -97,7 +99,7 @@ end
 &quot;&quot;&quot;
     Triangle(base::Float64, height::Float64)
 
-Construtor do tipo Triangle
+Constructor of the Triangle type
 &quot;&quot;&quot;
 function Triangle(base::Float64, height::Float64)
     Triangle(&quot;(base*height)/2&quot;, base, height)
@@ -106,104 +108,21 @@ end
 &quot;&quot;&quot;
     area(triangle::Triangle)
 
-Calcula a área de um triângulo declarado como Triangle
+Calculates the area of ​​a `Triangle`
 &quot;&quot;&quot;
 function area(triangle::Triangle)
     return (triangle.base)*(triangle.height)/2
 end
 
-end # end module</code></pre><p>Para mais informações <a href="https://docs.julialang.org/en/v1.0/manual/modules/">Modules</a></p><h2><a class="nav-anchor" id="Interface-Comum-1" href="#Interface-Comum-1">Interface Comum</a></h2><p>Agora gostaríamos de criar uma interface que permitisse o cálculo da área de qualquer figura geométrica e a informação da fórmula da área, o único requisito para poder calcular tal área é que <strong>alguém</strong> tenha criado um módulo para a tal figura geométrica com a função específica para calcular a área.</p><p>Alguns exemplos clássicos de módulos que funcionam como interface comum seriam <code>JuMP</code> e <code>Plots</code>. Esses módulos reunem uma série de funções básicas que podem ser realizadas de formas diferentes, um exemplo fácil é a função <code>optimize!</code>, podemos resolver um problema de programação linear usando solvers diferentes como <code>Clp</code> e <code>Gurobi</code></p><p>A interface seria o módulo Shape</p><pre><code class="language-julia">module Shape
-
-export area, printformula, GeometricShape
-
-abstract type GeometricShape end
-
-&quot;&quot;&quot;
-    area(shape::GeometricShape)
-
-Calcula a área de uma figura geométrica do tipo GeometricShape
-&quot;&quot;&quot;
-function area(shape::GeometricShape)
-     error(&quot;function not defined for $(typeof(shape))&quot;)
-end
-
-&quot;&quot;&quot;
-    printformula(shape::GeometricShape)
-
-Escreve a fórmula da área de uma figura geométrica do tipo GeometricShape
-&quot;&quot;&quot;
-function printformula(shape::GeometricShape)
-    print(shape.formula)
-end
-
-end # end module</code></pre><p>Agora dado que existe esse módulo de interface comum qualquer desenvolvedor poderá criar módulos independentes que se aproveitam da estrutura do Shape. Podemos integrar o módulo Rect e Triang como no exemplo abaixo</p><pre><code class="language-julia">module Rect
-
-using Shape             # Necessário para poder usar a interface comum
-
-export Rectangle, area  # Métodos visiveis pelo usuário que fez using Rect
-
-mutable struct Rectangle &lt;: GeometricShape # GeometricShape foi definido pelo módulo Shape
-    formula::String
-    base::Float64
-    height::Float64
-end
-
-&quot;&quot;&quot;
-    Rectangle(base::Float64, height::Float64)
-
-Construtor do tipo Rectangle
-&quot;&quot;&quot;
-function Rectangle(base::Float64, height::Float64)
-    Rectangle(&quot;base*height&quot;, base, height)
-end
-
-function Shape.area(rectangle::Rectangle)
-    return (rectangle.base)*(rectangle.height)
-end
-
-end # end module</code></pre><pre><code class="language-julia">module Triang
-
-using Shape             # Necessário para poder usar a interface comum
-
-export Triangle, area   # Métodos visiveis pelo usuário que fez using Rect
-
-mutable struct Triangle &lt;: GeometricShape
-    formula::String
-    base::Float64
-    height::Float64
-end
-
-&quot;&quot;&quot;
-    Triangle(base::Float64, height::Float64)
-
-Construtor do tipo Triangle
-&quot;&quot;&quot;
-function Triangle(base::Float64, height::Float64)
-    Triangle(&quot;(base*height)/2&quot;, base, height)
-end
-
-function Shape.area(triangle::Triangle)
-    return (triangle.base)*(triangle.height)/2
-end
-
-end # end module</code></pre><p>Agora podemos usar a função area para calcular areas de quaisquer Figuras Geométricas definidas assim como podemos descobrir a fórmula para o cálculo da área</p><pre><code class="language-julia">using Shape, Rect, Triang
-
-triang = Triangle(1.0, 2.0)
-rect = Rectangle(1.0, 2.0)
-
-area(rect)
-area(triang)
-
-printformula(triang)
-printformula(rect)</code></pre><p>Você também pode atribuir funções que são contribuidas</p><p>usar exemplo pessoa ou pensar em algo que faça sentido para shape</p><p>Links úteis para se aprofundar <a href="http://www.stochasticlifestyle.com/modular-algorithms-scientific-computing-julia/">Modular Algorithms for Scientific Computing in Julia</a></p><h2><a class="nav-anchor" id="Test-1" href="#Test-1">Test</a></h2><p>O Julia tem uma biblioteca específica para realizar testes unitários, aqui estão alguns exemplos rápidos do uso da biblioteca. Vamos usar os pacotes ja usados como exemplo <code>Rect</code> e <code>Triang</code>. digamos que a título de teste unitário do módulo gostariamos de checar se as áreas estão sendo calculadas de forma correta. Nesse caso temos uma grande vantagem, as áreas são super fáceis de calcular analiticamente! :)</p><pre><code class="language-julia">using Test, Shape, Triang, Rect
+end # end module</code></pre><p>TODO teach how to use the module that was built</p><p>For more information <a href="https://docs.julialang.org/en/v1.0/manual/modules/">Modules</a> -  <a href="https://github.com/JuliaLang/Example.jl">Example</a></p><h2><a class="nav-anchor" id="Test-1" href="#Test-1">Test</a></h2><p>Julia has a specific library for unit testing, here are some quick examples of using the library. We will use the packages already used as examples <span>$`Rect$</span><code>and</code> <span>$Triang$</span>. let&#39;s say that as a unit test of the module we would like to check if the areas are being calculated correctly. In this case, we have a great advantage, the areas are super easy to calculate analytically! </p><pre><code class="language-Julia">using Test, Triang, Rect
 
 rect = Rectangle(1.0, 2.0)
 triang = Triangle(1.0, 2.0)
 
-area(rect)    # Área = 2
-area(triang)  # Área = 1</code></pre><p>Para testa o código podemos usar a macro <code>@test</code> no mesmo arquivo adicionando </p><pre><code class="language-julia">@test area(rect) == 2
-@test area(triang) == 1</code></pre><p>Outra forma de fazer os testes seria agrupa-los em um <code>@testset</code></p><pre><code class="language-julia">@testset &quot;Áreas de Figuras Geométricas&quot; begin
+area(rect)    # area = 2
+area(triang)  # area = 1</code></pre><p>To test the code we can use the <span>$`@ test$</span>` macro in the same file by adding</p><pre><code class="language-Julia">@test area(rect) == 2
+@test area(triang) == 1</code></pre><p>Another way to do the tests would be to group them into a <span>$`@ testset$</span>`</p><pre><code class="language-Julia">@testset &quot;Áreas de Figuras Geométricas&quot; begin
     @test area(rect) == 2
     @test area(triang) == 1
-end</code></pre><p>A vantagem de fazer os testes com <code>@testset</code> é que no final dos testes a macro mostra um resumo dos testes no console</p><pre><code class="language-none">Test Summary:                | Pass  Total
-Áreas de Figuras Geométricas |    2      2</code></pre><p>para mais informações ver <a href="https://docs.julialang.org/en/v1.0/stdlib/Test/">Unit Testing</a></p><footer><hr/><a class="previous" href="../../"><span class="direction">Previous</span><span class="title">Home</span></a><a class="next" href="../jump/"><span class="direction">Next</span><span class="title">JuMP</span></a></footer></article></body></html>
+end</code></pre><p>The advantage of doing tests with <span>$`@ testset$</span>` is that at the end of the tests the macro shows a summary of the tests in the console</p><pre><code class="language-none">Test Summary:                | Pass  Total
+Áreas de Figuras Geométricas |    2      2</code></pre><p>For more information <a href="https://docs.julialang.org/en/v1.0/stdlib/Test/">Unit Testing</a></p><footer><hr/><a class="previous" href="../../"><span class="direction">Previous</span><span class="title">Home</span></a><a class="next" href="../jupyternotebook/"><span class="direction">Next</span><span class="title">Jupyter Notebook (Accessing class materials)</span></a></footer></article></body></html>

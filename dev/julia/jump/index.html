@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>JuMP · Lamps Teaching</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/><link href="../../assets/logo.ico" rel="icon" type="image/x-icon"/></head><body><nav class="toc"><a href="../../index.html"><img class="logo" src="../../assets/logo.png" alt="Lamps Teaching logo"/></a><h1>Lamps Teaching</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../../search/"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../">Home</a></li><li><a class="toctext" href="../julia/">Julia</a></li><li class="current"><a class="toctext" href>JuMP</a><ul class="internal"><li><a class="toctext" href="#Exemplo-Básico-1">Exemplo Básico</a></li></ul></li><li><a class="toctext" href="../plots/">Plots</a></li><li><a class="toctext" href="../../git/git/">Git</a></li></ul></nav><article id="docs"><header><nav><ul><li><a href>JuMP</a></li></ul><a class="edit-page" href="https://github.com/LAMPSPUC/Teaching.jl/blob/master/docs/src/julia/jump.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>JuMP</span><a class="fa fa-bars" href="#"></a></div></header><h1><a class="nav-anchor" id="JuMP-1" href="#JuMP-1">JuMP</a></h1><p>JuMP é a biblioteca que usamos para resolver os problemas de otimização que escrevemos com a ajuda de um computador, JuMP não é a única biblioteca que faz isso, e nem Julia é a única linguagem com esse tipo de biblioteca.</p><ul><li>Em Python: <a href="https://www.cvxpy.org/">CVXPY</a></li></ul><p>Existem inclusve linguagens e softwares criados unica e exclusivamente para isso:</p><ul><li><a href="https://www.gams.com/">GAMS</a></li><li><a href="https://ampl.com/">AMPL</a></li></ul><p>A melhor forma de descobrir as ferramentas oferecidas pela biblioteca é pela <a href="http://www.juliaopt.org/JuMP.jl/stable/">documentação</a></p><h2><a class="nav-anchor" id="Exemplo-Básico-1" href="#Exemplo-Básico-1">Exemplo Básico</a></h2><h3><a class="nav-anchor" id="Formulação-1" href="#Formulação-1">Formulação</a></h3><p>Usaremos o exemplo da produção de berços e armários para mostrar as ferramentas básicas do JuMP, o modelo pode ser formulado da seguinte forma:</p><div>\[\begin{align}
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>JuMP · Lamps Teaching</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/><link href="../../assets/logo.ico" rel="icon" type="image/x-icon"/></head><body><nav class="toc"><a href="../../index.html"><img class="logo" src="../../assets/logo.png" alt="Lamps Teaching logo"/></a><h1>Lamps Teaching</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../../search/"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../">Home</a></li><li><a class="toctext" href="../julia/">Julia</a></li><li><a class="toctext" href="../jupyternotebook/">Jupyter Notebook (Accessing class materials)</a></li><li class="current"><a class="toctext" href>JuMP</a><ul class="internal"><li><a class="toctext" href="#Basic-Example-1">Basic Example</a></li></ul></li><li><a class="toctext" href="../plots/">Plots</a></li><li><a class="toctext" href="../../git/git/">Git</a></li></ul></nav><article id="docs"><header><nav><ul><li><a href>JuMP</a></li></ul><a class="edit-page" href="https://github.com/LAMPSPUC/Teaching.jl/blob/master/docs/src/julia/jump.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>JuMP</span><a class="fa fa-bars" href="#"></a></div></header><h1><a class="nav-anchor" id="JuMP-1" href="#JuMP-1">JuMP</a></h1><p>JuMP é a biblioteca que usamos para resolver os problemas de otimização que escrevemos com a ajuda de um computador, JuMP não é a única biblioteca que faz isso, e nem Julia é a única linguagem com esse tipo de biblioteca.</p><ul><li>Em Python: <a href="https://www.cvxpy.org/">CVXPY</a></li></ul><p>Existem inclusve linguagens e softwares criados unica e exclusivamente para isso:</p><ul><li><a href="https://www.gams.com/">GAMS</a></li><li><a href="https://ampl.com/">AMPL</a></li></ul><p>A melhor forma de descobrir as ferramentas oferecidas pela biblioteca é pela <a href="http://www.juliaopt.org/JuMP.jl/stable/">documentação</a></p><h2><a class="nav-anchor" id="Basic-Example-1" href="#Basic-Example-1">Basic Example</a></h2><h3><a class="nav-anchor" id="Formulation-1" href="#Formulation-1">Formulation</a></h3><p>Usaremos o exemplo da produção de berços e armários para mostrar as ferramentas básicas do JuMP, o modelo pode ser formulado da seguinte forma:</p><div>\[\begin{align}
 %
 \max_{x \geq 0} &amp; \sum 4x_1 + 3x_2\\
 %
@@ -9,33 +9,16 @@
 %
 \end{align}\]</div><h3><a class="nav-anchor" id="Criando-e-resolvendo-o-modelo-1" href="#Criando-e-resolvendo-o-modelo-1">Criando e resolvendo o modelo</a></h3><p>Para escrever o problema no JuMP deveremos usar as macros (funções que tem @ na frente) para definir variáveis (@variables), restrições (@constraint) e a função objetivo (@objective)</p><pre><code class="language-julia">using JuMP, Clp
 
-modeloProd = Model(with_optimizer(Clp.Optimizer)) # Cria ma variável modeloProd onde podemos escrevr variáveis, restrições, qual solver usar etc.
+model = Model(with_optimizer(Clp.Optimizer))
 
-@variable(modeloProd, x[i = 1:2] &gt;= 0) # Definimos que em modeloProd existe uma variável x com duas entradas maiores que 0
+@variable(model, x[i = 1:2] &gt;= 0)
 
-# Definimos que em modeloProd existem restrições (uma associada à armários e outra à berços)
-@constraint(modeloProd, armarios, 2*x[1] + x[2] &lt;= 4)
-@constraint(modeloProd, bercos, x[1] + 2*x[2] &lt;= 4)
+@constraint(model, armarios, 2*x[1] + x[2] &lt;= 4)
+@constraint(model, bercos, x[1] + 2*x[2] &lt;= 4)
 
-# Definimos que em modeloProd existe uma função objetivo
-@objective(modeloProd, Max, 4*x[1] + 3*x[2])
+@objective(model, Max, 4*x[1] + 3*x[2])
 
-JuMP.optimize!(modeloProd) # Resolve o problema de otimização
+JuMP.optimize!(model) 
 
-JuMP.value.(x) #Valor das variáveis x
-JuMP.objective_value(modeloProd) #Valor da função objetivo no ótimo</code></pre><h3><a class="nav-anchor" id="Valores-das-variáveis-duais-1" href="#Valores-das-variáveis-duais-1">Valores das variáveis duais</a></h3><p>É possível avaliar o valor das variáveis duais associadas a cada restrição usando a função <code>dual</code></p><pre><code class="language-julia">using JuMP, Clp
-
-modeloProd = Model(with_optimizer(Clp.Optimizer))
-
-@variable(modeloProd, x[i = 1:2] &gt;= 0)
-
-@constraint(modeloProd, armarios, 2*x[1] + x[2] &lt;= 4)
-@constraint(modeloProd, bercos, x[1] + 2*x[2] &lt;= 4)
-
-@objective(modeloProd, Max, 4*x[1] + 3*x[2])
-
-JuMP.optimize!(modeloProd)
-
-# Valor das variáveis duais associadas a cada restrição
-dual(armarios)
-dual(bercos)</code></pre><h3><a class="nav-anchor" id="Como-obter-as-constantes-A,-b-e-c-de-um-problema-de-programação-linear-1" href="#Como-obter-as-constantes-A,-b-e-c-de-um-problema-de-programação-linear-1">Como obter as constantes A, b e c de um problema de programação linear</a></h3><footer><hr/><a class="previous" href="../julia/"><span class="direction">Previous</span><span class="title">Julia</span></a><a class="next" href="../plots/"><span class="direction">Next</span><span class="title">Plots</span></a></footer></article></body></html>
+JuMP.value.(x) 
+JuMP.objective_value(model) </code></pre><footer><hr/><a class="previous" href="../jupyternotebook/"><span class="direction">Previous</span><span class="title">Jupyter Notebook (Accessing class materials)</span></a><a class="next" href="../plots/"><span class="direction">Next</span><span class="title">Plots</span></a></footer></article></body></html>
