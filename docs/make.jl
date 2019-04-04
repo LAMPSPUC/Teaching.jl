@@ -11,7 +11,7 @@ makedocs(
     pages = [
         "Home" => "index.md",    
         "julia/julia.md",
-        "julia/jupyternotebook.md"
+        "julia/jupyternotebook.md",
         "julia/jump.md",
         "julia/plots.md",
         "git/git.md"
