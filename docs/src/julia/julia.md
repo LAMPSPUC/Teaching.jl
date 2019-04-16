@@ -6,7 +6,9 @@ Useful links:
 
 * [Julia Learning](https://julialang.org/learning/)
 * [Julia no youtube](https://www.youtube.com/channel/UC9IuUwwE2xdjQUT_LMLONoA)
-* [Programação em Julia](https://www.dropbox.com/sh/36cw2h49n39ilga/AADCTNPmPNkkrN3FCCfPAH8ga?dl=0)
+* [Programação em Julia 2017.1(Julia 0.6)](https://www.dropbox.com/sh/36cw2h49n39ilga/AADCTNPmPNkkrN3FCCfPAH8ga?dl=0)
+* [Programação em Julia 2019.2(Julia 1.0)](https://goo.gl/Hgwiwm)
+
 
 ## Installation
 
