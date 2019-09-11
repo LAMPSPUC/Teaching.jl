@@ -16,6 +16,8 @@ To install Julia just follow the steps on this [link] (https://julialang.org/dow
 
 We recommend downloading version 1.0.3 (Long-term support release)
 
+Make sure that you can open a terminal/prompt and type julia to open a new session.
+
 ## IDEs
 
 Once Julia is installed on your computer you will need an Integrated Development Environment (IDE) to unpack your code. The most common ones are:
@@ -74,6 +76,19 @@ search: findmin findmin! findmax findmax!
   
   Julia> findmin(A, dims=2)
   ([1.0; 3.0], CartesianIndex{2}[CartesianIndex(1, 1); CartesianIndex(2, 1)])
+```
+
+## Useful packages
+
+These are some useful packages to have during the optimization classes. You only have to copy and paste this in your julia terminal.
+
+```julia
+import Pkg
+Pkg.add("JuMP")
+Pkg.add("GLPK")
+Pkg.add("DataFrames")
+Pkg.add("CSV")
+Pkg.add("Plots")
 ```
 
 ## Functions

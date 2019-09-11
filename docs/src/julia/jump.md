@@ -21,7 +21,7 @@ o modelo pode ser formulado da seguinte forma:
 ```math
 \begin{align}
 %
-\max_{x \geq 0} & \sum 4x_1 + 3x_2\\
+\max_{x \geq 0} & 4x_1 + 3x_2\\
 %
 \mbox{s.a.: } & \nonumber \\
 & 2x_1 + x_2 \leq 4 \\
@@ -35,9 +35,9 @@ o modelo pode ser formulado da seguinte forma:
 Para escrever o problema no JuMP deveremos usar as macros (funções que tem @ na frente) para definir variáveis (@variables), restrições (@constraint) e a função objetivo (@objective)
 
 ```julia
-using JuMP, Clp
+using JuMP, GLPK
 
-model = Model(with_optimizer(Clp.Optimizer))
+model = Model(with_optimizer(GLPK.Optimizer))
 
 @variable(model, x[i = 1:2] >= 0)
 
